@@ -1,0 +1,9 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+
+RewriteRule ^receive/([0-9]+)/?$ Controller.php?view=receive&sender=$1 [L,qsa]
+RewriteRule ^send/([0-9]+)/([0-9]+)/([a-z]+)/?$ Controller.php?view=send&sender=$1&receiver=$2&message=$3 [l,qsa]
+
+
