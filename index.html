@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Contact</title>
     <button onclick="GetList('http://localhost/php-files/contacts/send/123/234/a')">send</button>
-    <button onclick="GetList('http://localhost/php-files/contacts/receive/2/')">receive</button>
+    <button onclick="GetList('http://localhost/php-files/contacts/receive/234/')">receive</button>
     <script>
 
         function GetList(url)
@@ -19,16 +19,10 @@
           xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 console.log(xhr.status);
-                console.log(JSON.stringify(xhr.responseText));
+                console.log(xhr.responseText);
 
-                const myObj = JSON.parse(xhr.responseText);
-                phoneNumber = myObj.sender;
-                message     = myObj.message;
             }};
-          
-          //xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-          //xhr.setRequestHeader('Access-Control-Request-Headers', 'Content-Type');
-            console.log(phoneNumber); 
+
           xhr.send();
          
         }

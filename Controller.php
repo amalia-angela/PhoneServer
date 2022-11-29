@@ -23,11 +23,14 @@ switch ( $view ){
 		
 		if ( $returnData != null)
 		{
-			$contact->deleteFromList($returnData);
+			
+			$contact->deleteFromList($returnData["id"]);
 			echo json_encode($returnData);
+			
 		}
-		else
+		else{
 			echo json_encode('');
+		}		   
 		break;
 		
 	case "":
