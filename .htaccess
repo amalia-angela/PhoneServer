@@ -4,6 +4,7 @@ RewriteEngine on
 
 
 RewriteRule ^receive/([0-9]+)/?$ Controller.php?view=receive&sender=$1 [L,qsa]
-RewriteRule ^send/([0-9]+)/([0-9]+)/([a-z]+)/?$ Controller.php?view=send&sender=$1&receiver=$2&message=$3 [l,qsa]
+RewriteRule ^call/send/([0-9]+)/([0-9]+)/([a-z]+)/?$ Controller.php?view=call&sender=$1&receiver=$2&message=$3 [l,qsa]
+RewriteRule ^message/send/([0-9]+)/([0-9]+)/([a-z]+)/([a-z]+)/?$ Controller.php?view=message&sender=$1&receiver=$2&message=$3&content=$4 [l,qsa]
 
 

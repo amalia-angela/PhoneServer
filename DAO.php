@@ -6,14 +6,14 @@ class DAO {
     //define( "password", "localhost");
    // define( "dbname", "messages");
     
-    public function insertIntoTable($sender, $receiver, $message)
+    public function insertIntoTable($sender, $receiver, $message, $contet = null )
     {
         $conn = new mysqli("localhost", "root",  "localhost", "phoneserverdb");
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "INSERT INTO `messages`(`Sender`, `Receiver`, `Message`) VALUES('$sender','$receiver', '$message')";
+        $sql = "INSERT INTO `messages`(`Sender`, `Receiver`, `Message`, `Content`) VALUES('$sender','$receiver', '$message', '$contet')";
         
 
         if (mysqli_query($conn, $sql)) {
@@ -36,16 +36,17 @@ class DAO {
             die("Connection failed: " . $conn->connect_error);
             }
 
-        $sql = "SELECT `Id`, `Sender`, `Receiver`, `Message` FROM messages WHERE `Receiver`='$receiver' LIMIT 1";
+        $sql = "SELECT `Id`, `Sender`, `Receiver`, `Message`, `Content` FROM messages WHERE `Receiver`='$receiver' LIMIT 1";
         $result = mysqli_query($conn,$sql);        
        
         if (mysqli_query($conn, $sql)) {
             while($row = $result->fetch_assoc())
             {
-                $res['id'] = $row['Id'];
-                $res['sender'] = $row['Sender'];
+                $res['id']       = $row['Id'];
+                $res['sender']   = $row['Sender'];
                 $res['receiver'] = $row['Receiver'];
-                $res['message'] = $row['Message'];
+                $res['message']  = $row['Message'];
+                $res['content']  = $row['Content'];
             }
         }
         return $res;

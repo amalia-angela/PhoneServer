@@ -11,9 +11,14 @@ if ( isset ( $_GET["view"] ) )
 
 switch ( $view ){
 
-	case "send":
+	case "call":
 		global $contact;
-		$contact->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"]);
+		$contact->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], null);
+		
+		break;
+	case "message":
+		global $contact;
+		$contact->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], $_GET["content"]);
 		
 		break;
 

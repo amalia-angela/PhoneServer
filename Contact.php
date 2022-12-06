@@ -17,9 +17,9 @@ class Contact {
 		
 	}
 
-	public function addToList ( $idSender, $idReciver, $message ){
+	public function addToList ( $idSender, $idReciver, $message, $content = null ){
 		global $dao;
-		$dao->insertIntoTable($idSender, $idReciver, $message);
+		$dao->insertIntoTable($idSender, $idReciver, $message, $content);
 
 	}
 
