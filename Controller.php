@@ -9,6 +9,8 @@ $view = "";
 if ( isset ( $_GET["view"] ) )
 	$view = $_GET["view"];
 
+$body = file_get_contents('php://input');
+
 switch ( $view ){
 
 	case "call":
@@ -18,8 +20,8 @@ switch ( $view ){
 		break;
 	case "message":
 		global $contact;
-		$contact->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], $_GET["content"]);
-		
+		$contact->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], $body);
+		//echo "body: " . $body;
 		break;
 
 	case "receive":

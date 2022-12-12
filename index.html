@@ -6,26 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Contact</title>
     <button onclick="GetList('http://localhost/php-files/contacts/send/123/234/a')">send</button>
-    <button onclick="GetList('http://localhost/php-files/contacts/receive/234/')">receive</button>
+    <button onclick="Receive('http://localhost/php-files/contacts/receive/234/')">receive</button>
+    <button onclick="GetList('http://localhost/php-files/contacts/message/send/123/234/mes/')">message</button>
     <script>
+      function Receive(url)
+      { 
+        var phoneNumber = "";
+        var message = "";
+        var messageContent = "";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, false);     
+        xhr.onload = function() {
+            if ( xhr.status == 200 ) {
+              
+              let json       = JSON.parse( xhr.response );
+              phoneNumber    = json.sender;
+              message        = json.message;
+              messageContent = json.content;
+            }};  
+        xhr.send();
+      
+        console.log(phoneNumber);
+        console.log(message);
+        console.log(messageContent);
+      }
 
-        function GetList(url)
-        {
-          var phoneNumber = "";
-          var message = "";
-          var xhr = new XMLHttpRequest();
-          xhr.open("GET", url);
 
-          xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                console.log(xhr.status);
-                console.log(xhr.responseText);
+      function GetList(url)
+      {
+        var phoneNumber = "";
+        var message = "";
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, false);
 
-            }};
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+              console.log(xhr.status);
+              console.log(xhr.responseXML);
 
-          xhr.send();
-         
-        }
+          }};
+
+        xhr.send('hei how are you?');
+        
+      }
 
     </script>
 

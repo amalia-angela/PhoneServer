@@ -17,7 +17,7 @@ class DAO {
         
 
         if (mysqli_query($conn, $sql)) {
-           // echo "New message created successfully";
+           //echo "New message created successfully";
         } else {
            // echo "Error: " . $sql . " " . $conn->error;
         }
