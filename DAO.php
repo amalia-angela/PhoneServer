@@ -26,6 +26,28 @@ class DAO {
         
     }
 
+    public function checkTimeout()
+    {
+        $conn = new mysqli("localhost", "root",  "localhost", "phoneserverdb");
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "UPDATE `messages` SET `Message`='missed' WHERE TIMESTAMPDIFF(SQL_TSI_MINUTE,`RegDate`,CURRENT_TIMESTAMP)>1 AND `Message`='call';";  
+/*
+        $sql = "SELECT `Sender`, `Receiver`, `Message`, `Content` FROM messages WHERE `Message`='missed'";
+        $result = mysqli_query($conn,$sql);        
+       
+        if (mysqli_query($conn, $sql)) {
+            while($row = $result->fetch_assoc())
+            {
+                insertIntoTable($row['Receiver'], $row['Sender'], $row['Message'], null );
+            }
+        }
+*/
+        $conn->close();
+    }
+
     public function findReceiver($receiver)
     {   
         $res = array();

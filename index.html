@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Contact</title>
-    <button onclick="GetList('http://localhost/php-files/contacts/send/123/234/a')">send</button>
+    <button onclick="Send('http://localhost/php-files/contacts/call/send/32/12/call/')">send</button>
     <button onclick="Receive('http://localhost/php-files/contacts/receive/234/')">receive</button>
     <button onclick="GetList('http://localhost/php-files/contacts/message/send/123/234/mes/')">message</button>
     <script>
@@ -31,7 +31,6 @@
         console.log(messageContent);
       }
 
-
       function GetList(url)
       {
         var phoneNumber = "";
@@ -42,12 +41,25 @@
         xhr.onload = function () {
           if (xhr.status === 200) {
               console.log(xhr.status);
-              console.log(xhr.responseXML);
+              console.log(xhr.responseText);
 
           }};
 
         xhr.send('hei how are you?');
         
+      }
+
+      function Send(url)
+      {
+        var req = new XMLHttpRequest();  
+        req.open( "POST", url, false );
+        
+        req.onload = function() {
+          if ( req.status == 200 ) {
+              console.log( req.status );
+              result = req.responseText;
+          }};          
+        req.send();
       }
 
     </script>

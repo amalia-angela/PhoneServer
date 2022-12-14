@@ -21,7 +21,6 @@ switch ( $view ){
 	case "message":
 		global $contact;
 		$contact->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], $body);
-		//echo "body: " . $body;
 		break;
 
 	case "receive":
