@@ -2,12 +2,12 @@
 require_once('DAO.php');
 $dao = new DAO();
 
-class Contact {	
+class Messages {	
 
 	public function searchForReceiver ( $receiver ) {
 		global $dao;
-		$result = $dao->findReceiver( $receiver );
-		$dao->checkTimeout();
+		//$dao->checkTimeout();
+		$result = $dao->findReceiver( $receiver );		
 		if ( $result)
 		{
 			//echo "found";
@@ -19,6 +19,7 @@ class Contact {
 
 	public function addToList ( $idSender, $idReciver, $message, $content = null ){
 		global $dao;
+		//$dao->checkTimeout();
 		$dao->insertIntoTable($idSender, $idReciver, $message, $content);
 	}
 

@@ -1,6 +1,6 @@
 <?php
-require_once("Contact.php");
-$contact = new Contact();
+require_once("Messages.php");
+$messages = new Messages();
 
 //header('Access-Control-Allow-Origin: *');
 //header("Access-Control-Allow-Headers: Content-Type")
@@ -13,26 +13,26 @@ $body = file_get_contents('php://input');
 
 switch ( $view ){
 
-	case "call":
-		global $contact;
-		$contact->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], null);
+	case "sendcall":
+		global $messages;
+		$messages->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], null);
 		
 		break;
-	case "message":
-		global $contact;
-		$contact->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], $body);
+
+	case "sendmessage":
+		global $messages;
+		$messages->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], $body);
+		
 		break;
 
 	case "receive":
-		global $contact;
-		$returnData =  $contact->searchForReceiver($_GET["sender"]);
+		global $messages;
+		$returnData =  $messages->searchForReceiver($_GET["sender"]);
 		
-		if ( $returnData != null)
-		{
-			
-			$contact->deleteFromList($returnData["id"]);
+		if ( $returnData != null ) 
+		{			
+			$messages->deleteFromList($returnData["id"]);
 			echo json_encode($returnData);
-			
 		}
 		else{
 			echo json_encode('');
