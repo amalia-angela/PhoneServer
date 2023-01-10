@@ -4,7 +4,7 @@ This is a php server, that receive and send messages between phone devices. The 
 
 
 ## Installation
-To run this project need a code editor and xampp.
+To run this project you need a code editor and xampp.
 ### Code editor
 I used [Visual Studio Code](https://code.visualstudio.com/), but feel free to use any other code editor you are familiar with. If you choose to use [VSCode](https://code.visualstudio.com/) go the official page, download the installer and follow the setup steps.
 
