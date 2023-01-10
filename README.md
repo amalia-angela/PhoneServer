@@ -13,7 +13,7 @@ Go the official [XAMPP](https://www.apachefriends.org/) page, download the insta
 
 ## Usage
 
-- Download this project and move it to the *http://localhost/php-files/* directory. Name the folder "phoneServer".
+- Download this project and move it to the *C:\xampp\htdocs* directory. Name the folder "phoneServer".
 - Open XAMPP Control Panel and **start** *Apache* and *MySQL* modules. Make sure the ports the modules are running on are free.
 - Open a web browser, type *localhost*, select *phpMyAdmin* from the menu bar and run the [sql query](https://github.com/amalia-angela/PhpServer/blob/main/SqlScript/messages.sql) to create the database. [This is](https://github.com/amalia-angela/PhpServer/blob/main/SqlScript/db.png) how the database will look like.
 - Open the project in the code editor. In [DAO.php](https://github.com/amalia-angela/PhpServer/blob/main/DAO.php) file change the username and password to your own.
