@@ -1,6 +1,6 @@
 # Php PhoneServer
 
-This program is the server for the [PhoneApp](https://github.com/amalia-angela/PhoneApp) application. This php server receive and send messages between phone devices. The messages are stored into a phpMyAdmin database. This program is the server for the [PhoneApp](https://github.com/amalia-angela/PhoneApp) application.
+This program is the server for the [PhoneApp](https://github.com/amalia-angela/PhoneApp) application developed in Embedded Wizard. This php server receive and send messages between phone devices. The messages are stored into a phpMyAdmin database. This program is the server for the [PhoneApp](https://github.com/amalia-angela/PhoneApp) application.
 
 
 ## Installation
