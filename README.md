@@ -1,4 +1,4 @@
-# PhpServer
+# Php PhoneServer
 
 This is a php server, that receive and send messages between phone devices. The messages are stored into a phpMyAdmin database. This program is the server for the [PhoneApp](https://github.com/amalia-angela/PhoneApp) application.
 
