@@ -3,10 +3,17 @@ require_once('DAO.php');
 $dao = new DAO();
 
 class Messages {	
+	
+	public function deleteOldMessages(){
+
+		global $dao;
+		$dao->deleteOldMessages();
+	}
 
 	public function searchForReceiver ( $receiver ) {
+		
 		global $dao;
-		//$dao->checkTimeout();
+		$dao->checkTimeout();
 		$result = $dao->findReceiver( $receiver );		
 		if ( $result)
 		{
@@ -18,14 +25,16 @@ class Messages {
 	}
 
 	public function addToList ( $idSender, $idReciver, $message, $content = null ){
+		
 		global $dao;
-		//$dao->checkTimeout();
+		$dao->checkTimeout();
 		$dao->insertIntoTable($idSender, $idReciver, $message, $content);
 	}
 
 	public function deleteFromList ( $id ){
+		
 		global $dao;
-		$dao->deleteFromTable($id);
-		}
+		$dao->deleteByID($id);
+	}
 }
 ?>

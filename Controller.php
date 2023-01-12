@@ -15,18 +15,21 @@ switch ( $view ){
 
 	case "sendcall":
 		global $messages;
+		$dao->deleteOldMessages();
 		$messages->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], null);
 		
 		break;
 
 	case "sendmessage":
 		global $messages;
+		$messages->deleteOldMessages();
 		$messages->addToList($_GET["sender"], $_GET["receiver"], $_GET["message"], $body);
 		
 		break;
 
 	case "receive":
 		global $messages;
+		$messages->deleteOldMessages();
 		$returnData =  $messages->searchForReceiver($_GET["sender"]);
 		
 		if ( $returnData != null ) 
